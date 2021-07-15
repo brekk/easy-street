@@ -24,5 +24,6 @@
   "repository": "https://github.com/brekk/two-way",
   "author": "Brekk <brekk@brekkbockrath.com>",
   "license": "ISC",
-  "private": false
+  "private": false,
+  "files": ["two-way.js"]
 }

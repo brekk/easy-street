@@ -1,3 +1,3 @@
-# brekkfast
+# two-way
 
-A starter kit to help brekk to be fast
+A simple Either monad implementation

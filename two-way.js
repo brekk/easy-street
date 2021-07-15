@@ -1,7 +1,5 @@
 'use strict';
 
-require('ramda');
-
 const inherit = Object.create;
 
 function delegatedMethod(method, x, y) {
