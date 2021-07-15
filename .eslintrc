@@ -1,0 +1,4 @@
+extends: sorcerers
+rules:
+- no-unused-vars
+  - varsIgnorePattern: _
