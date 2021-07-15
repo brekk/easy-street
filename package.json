@@ -17,13 +17,13 @@
     "prettier-eslint": "^12.0.0",
     "rollup": "^2.45.2"
   },
-  "name": "two-way",
+  "name": "easy-street",
   "version": "0.0.0",
   "description": "simple Either monad",
-  "main": "two-way.js",
-  "repository": "https://github.com/brekk/two-way",
+  "main": "easy-street.js",
+  "repository": "https://github.com/brekk/easy-street",
   "author": "Brekk <brekk@brekkbockrath.com>",
   "license": "ISC",
   "private": false,
-  "files": ["two-way.js"]
+  "files": ["easy-street.js"]
 }
