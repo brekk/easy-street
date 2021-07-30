@@ -67,7 +67,7 @@ Right.prototype.ap = function ap(x) {
 };
 
 Left.prototype.map = noop;
-Right.prototype.map = function map(f) {
+Right.prototype.map = function rMap(f) {
   return this.of(f(this.value))
 };
 
@@ -146,10 +146,10 @@ Right.prototype.lte = function rLTE(other) {
 };
 
 Left.prototype.equals = function lEquals(other) {
-  return other.isLeft && equals(this.value, other.value)
+  return other && other.isLeft && equals(this.value, other.value)
 };
 Right.prototype.equals = function rEquals(other) {
-  return other.isRight && equals(this.value, other.value)
+  return other && other.isRight && equals(this.value, other.value)
 };
 
 const leftAliaser = aliasFor(Left.prototype);

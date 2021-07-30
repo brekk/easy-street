@@ -1,5 +1,4 @@
 import {
-  inherit,
   delegatedMethod,
   lte,
   equals,
@@ -15,7 +14,7 @@ test('delegatedMethod', () => {
     this.value = y
     return this
   }
-  X.prototype.crap = function crap(x) {
+  X.prototype.crap = function crap(_) {
     this.cool = false
     return this
   }

@@ -18,12 +18,12 @@
     "rollup": "^2.45.2"
   },
   "name": "easy-street",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "simple Either monad",
   "main": "easy-street.js",
   "repository": "https://github.com/brekk/easy-street",
   "author": "Brekk <brekk@brekkbockrath.com>",
   "license": "ISC",
   "private": false,
-  "files": ["easy-street.js"]
+  "files": ["easy-street.js", "easy-street.mjs"]
 }

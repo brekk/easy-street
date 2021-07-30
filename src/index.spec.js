@@ -1,8 +1,8 @@
 import Either from './index'
 
 describe('Left', () => {
-  let raw = undefined
-  let inner = undefined
+  let raw
+  let inner
   beforeEach(() => {
     inner = Math.round(Math.random() * 1e5)
     raw = Either.Left(inner)
@@ -51,7 +51,7 @@ describe('Left', () => {
     expect(raw.alt(number)).toEqual(number)
   })
   test('reduce', () => {
-    expect(raw.reduce((x, y) => 'kang + kodos', 100)).toEqual(100)
+    expect(raw.reduce((_, __) => 'kang + kodos', 100)).toEqual(100)
   })
 
   test('extend', () => {
@@ -68,8 +68,8 @@ describe('Left', () => {
 })
 
 describe('Right', () => {
-  let raw = undefined
-  let inner = undefined
+  let raw
+  let inner
   beforeEach(() => {
     inner = Math.round(Math.random() * 1e5)
     raw = Either.Right(inner)

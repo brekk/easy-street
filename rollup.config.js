@@ -4,9 +4,8 @@ import json from '@rollup/plugin-json'
 // import shebang from 'rollup-plugin-add-shebang'
 import pkg from './package.json'
 
-const external = (pkg && pkg.dependencies
-  ? Object.keys(pkg.dependencies)
-  : []
+const external = (
+  pkg && pkg.dependencies ? Object.keys(pkg.dependencies) : []
 ).concat([`path`])
 
 const plugins = [
@@ -19,7 +18,15 @@ export default [
   {
     input: `src/index.js`,
     external,
-    output: [{ file: pkg.main, format: `cjs` }],
-    plugins: plugins
+    output: [{ exports: 'auto', file: pkg.main, format: `cjs` }],
+    plugins
+  },
+  {
+    input: 'src/index.js',
+    external,
+    output: [
+      { exports: 'auto', file: 'easy-street.mjs', format: 'esm' }
+    ],
+    plugins
   }
 ]

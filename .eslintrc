@@ -1,4 +1,9 @@
 extends: sorcerers
 rules:
-- no-unused-vars
-  - varsIgnorePattern: _
+  arrow-parens:
+  - error
+  - as-needed
+  no-unused-vars:
+  - 2
+  - argsIgnorePattern: ^_
+    varsIgnorePattern: ^_
