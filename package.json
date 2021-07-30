@@ -25,5 +25,5 @@
   "author": "Brekk <brekk@brekkbockrath.com>",
   "license": "ISC",
   "private": false,
-  "files": ["easy-street.js", "easy-street.mjs"]
+  "files": ["easy-street.js", "easy-street.mjs", "easy-street.umd.js"]
 }

@@ -18,14 +18,22 @@ export default [
   {
     input: `src/index.js`,
     external,
-    output: [{ exports: 'auto', file: pkg.main, format: `cjs` }],
+    output: [
+      { exports: 'auto', file: pkg.main, format: `cjs` },
+      { exports: 'auto', file: 'easy-street.mjs', format: 'esm' }
+    ],
     plugins
   },
   {
     input: 'src/index.js',
     external,
     output: [
-      { exports: 'auto', file: 'easy-street.mjs', format: 'esm' }
+      {
+        name: 'easystreet',
+        exports: 'auto',
+        file: 'easy-street.umd.js',
+        format: 'umd'
+      }
     ],
     plugins
   }
