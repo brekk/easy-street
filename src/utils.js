@@ -12,11 +12,23 @@ export function delegatedMethod(method, x, y) {
 
 export function lte(x, y) {
   const lessThanOrEqualTo = delegatedMethod('lte', x, y)
-  return lessThanOrEqualTo || x <= y
+  if (lessThanOrEqualTo) {
+    return lessThanOrEqualTo
+  }
+  if (x && x.value && y && y.value) {
+    return x.value <= y.value
+  }
+  return x <= y
 }
 export function equals(x, y) {
   const equal = delegatedMethod('equals', x, y)
-  return equal || x === y
+  if (equal) {
+    return equal
+  }
+  if (x && x.value && y && y.value) {
+    return x.value === y.value
+  }
+  return x === y
 }
 export function map(fn, x) {
   return x.map(fn)

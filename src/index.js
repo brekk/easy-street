@@ -109,17 +109,29 @@ Right.prototype.bimap = function rBimap(f, g) {
 
 // 5G
 Left.prototype.lte = function lLTE(other) {
-  return other.isRight || lte(this.value, other.value)
+  if (other && other.isRight) {
+    return lte(this.value, other.value)
+  }
+  return false
 }
 Right.prototype.lte = function rLTE(other) {
-  return other.isRight && lte(this.value, other.value)
+  if (other && other.isRight) {
+    return lte(this.value, other.value)
+  }
+  return false
 }
 
 Left.prototype.equals = function lEquals(other) {
-  return other && other.isLeft && equals(this.value, other.value)
+  if (other && other.isLeft) {
+    return equals(this.value, other.value)
+  }
+  return false
 }
 Right.prototype.equals = function rEquals(other) {
-  return other && other.isRight && equals(this.value, other.value)
+  if (other && other.isRight) {
+    return equals(this.value, other.value)
+  }
+  return false
 }
 
 const leftAliaser = aliasFor(Left.prototype)

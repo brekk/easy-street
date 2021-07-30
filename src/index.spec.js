@@ -59,11 +59,15 @@ describe('Left', () => {
   })
 
   test('lte', () => {
-    expect(raw.lte(Either.of(-1))).toBeTruthy()
+    expect(raw.lte(Either.of(-1))).toBeFalsy()
     expect(raw.lte(Either.Left(-1))).toBeFalsy()
+    expect(raw.lte(Either.of(1000))).toBeFalsy()
   })
   test('equals', () => {
     expect(raw.equals(Either.Left(inner))).toBeTruthy()
+    expect(raw.equals(Either.Left(null))).toBeFalsy()
+    expect(raw.equals(Either.Right(inner))).toBeFalsy()
+    expect(raw.equals(Either.Right(null))).toBeFalsy()
   })
 })
 
@@ -131,9 +135,14 @@ describe('Right', () => {
   })
   test('lte', () => {
     expect(raw.lte(Either.of(-1))).toBeFalsy()
+    expect(raw.lte(Either.Right(1000))).toBeFalsy()
+    expect(raw.lte(Either.Left(-1))).toBeFalsy()
   })
   test('equals', () => {
+    expect(raw.equals(Either.Left(inner))).toBeFalsy()
+    expect(raw.equals(Either.Left(null))).toBeFalsy()
     expect(raw.equals(Either.Right(inner))).toBeTruthy()
+    expect(raw.equals(Either.Right(null))).toBeFalsy()
   })
 })
 
