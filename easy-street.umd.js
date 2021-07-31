@@ -61,6 +61,13 @@
   Right.prototype.isLeft = false;
   Right.prototype.isRight = true;
 
+  Either.isLeft = function isLeft(x) {
+    return x && x.isLeft
+  };
+  Either.isRight = function isRight(x) {
+    return x && x.isRight
+  };
+
   Either.Left = function ELeft(x) {
     return new Left(x)
   };
@@ -73,6 +80,16 @@
 
   Either.safe = x => (x != null ? Either.Right(x) : Either.Left(x));
   Either.prototype.safe = Either.safe;
+  Either.tryCatch = function tryCatch(errorConsumer, tryable) {
+    return function runner() {
+      const args = Array.from(arguments);
+      try {
+        return Either.of(tryable.apply(this, args))
+      } catch (e) {
+        return Either.Left(errorConsumer(args, e))
+      }
+    }
+  };
 
   Either.of = a => Either.Right(a);
   Either.prototype.of = Either.of;
