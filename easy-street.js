@@ -91,8 +91,12 @@ Either.of = a => Either.Right(a);
 Either.prototype.of = Either.of;
 
 Left.prototype.ap = noop;
+Left.prototype.ap2 = noop;
 Right.prototype.ap = function ap(x) {
   return x.map(this.value)
+};
+Right.prototype.ap2 = function ap2(x) {
+  return this.map(x.value)
 };
 
 Left.prototype.map = noop;

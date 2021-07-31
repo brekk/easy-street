@@ -1,5 +1,6 @@
 import Either from './index'
 
+const double = x => x * 2
 describe('Left', () => {
   let raw
   let inner
@@ -8,10 +9,12 @@ describe('Left', () => {
     raw = Either.Left(inner)
   })
   test('ap', () => {
-    const double = x => x * 2
     expect(Either.Left(double).ap(Either.of(200)).value).toEqual(
       double
     )
+  })
+  test('ap2', () => {
+    expect(Either.Left(200).ap2(double).value).toEqual(200)
   })
   test('bimap', () => {
     const out = raw.bimap(
@@ -80,10 +83,14 @@ describe('Right', () => {
     inner = Math.round(Math.random() * 1e5)
     raw = Either.Right(inner)
   })
+
   test('ap', () => {
-    expect(Either.of(x => x * 2).ap(Either.of(200))).toEqual(
+    expect(Either.of(double).ap(Either.of(200))).toEqual(
       Either.of(400)
     )
+  })
+  test('ap2', () => {
+    expect(raw.ap2(Either.of(double))).toEqual(Either.of(inner * 2))
   })
   test('bimap', () => {
     expect(
