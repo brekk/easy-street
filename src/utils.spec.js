@@ -26,9 +26,17 @@ test('delegatedMethod', () => {
 })
 test('lte', () => {
   expect(lte(4, 5)).toBeTruthy()
+  expect(lte({ lte: () => false }, { lte: () => false })).toBeTruthy()
+  expect(lte({ lte: () => true }, { lte: () => true })).toBeTruthy()
+  expect(lte({ value: 200 }, { value: 400 })).toBeTruthy()
 })
 test('equals', () => {
   expect(equals(4, 4)).toBeTruthy()
+  expect(
+    equals({ equals: () => true }, { equals: () => true })
+  ).toBeTruthy()
+  expect(equals({ value: 2 }, { value: 2 })).toBeTruthy()
+  expect(equals({ value: 5 }, { value: 2 })).toBeFalsy()
 })
 test('map', () => {
   expect(map(x => x * 2, [1, 2, 3])).toEqual([2, 4, 6])

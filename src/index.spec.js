@@ -117,7 +117,7 @@ describe('Right', () => {
     expect(raw.map(z => z * 3).value).toEqual(inner * 3)
   })
   test('swap', () => {
-    expect(raw.swap().isLeft).toBeTruthy()
+    expect(Either.isLeft(raw.swap())).toBeTruthy()
   })
   test('toString', () => {
     expect(raw.toString()).toEqual(`Either.Right(${inner})`)
@@ -149,10 +149,22 @@ describe('Right', () => {
 describe('Either', () => {
   test('safe', () => {
     expect(Either.safe(null).isLeft).toBeTruthy()
-    expect(Either.safe(100).isRight).toBeTruthy()
+    expect(Either.isRight(Either.safe(100))).toBeTruthy()
   })
   test('of', () => {
     expect(Either(200)).toEqual(undefined)
     expect(Either.of(null).isRight).toBeTruthy()
+  })
+  test('tryCatch', () => {
+    const consumer = (args, e) => {
+      if (e.message === `Cannot read property 'cool' of undefined`) {
+        return `Safety wrapped!`
+      }
+      return e && e.message ? e.message : `Generic error`
+    }
+    const unsafeFn = (a, d) => a.cool[d]
+    const safeFn = Either.tryCatch(consumer, unsafeFn)
+    expect(() => safeFn(null, 'cool')).not.toThrow()
+    expect(safeFn({}, 'cool').value).toEqual(`Safety wrapped!`)
   })
 })
