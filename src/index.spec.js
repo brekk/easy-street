@@ -9,7 +9,9 @@ describe('Left', () => {
   })
   test('ap', () => {
     const double = x => x * 2
-    expect(Either.Left(double).ap([1, 2, 3]).value).toEqual(double)
+    expect(Either.Left(double).ap(Either.of(200)).value).toEqual(
+      double
+    )
   })
   test('bimap', () => {
     const out = raw.bimap(
@@ -79,7 +81,9 @@ describe('Right', () => {
     raw = Either.Right(inner)
   })
   test('ap', () => {
-    expect(Either.of(x => x * 2).ap([1, 2, 3])).toEqual([2, 4, 6])
+    expect(Either.of(x => x * 2).ap(Either.of(200))).toEqual(
+      Either.of(400)
+    )
   })
   test('bimap', () => {
     expect(
