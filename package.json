@@ -12,6 +12,8 @@
     "@rollup/plugin-node-resolve": "^11.2.1",
     "eslint": "^7.30.0",
     "eslint-config-sorcerers": "^0.0.7",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "nps": "^5.10.0",
     "prettier": "^2.3.2",
     "prettier-eslint": "^12.0.0",
@@ -25,5 +27,16 @@
   "author": "Brekk <brekk@brekkbockrath.com>",
   "license": "ISC",
   "private": false,
-  "files": ["easy-street.js", "easy-street.mjs", "easy-street.umd.js"]
+  "files": [
+    "easy-street.js",
+    "easy-street.mjs",
+    "easy-street.umd.js"
+  ],
+  "lint-staged": {
+    "src/*.js": "eslint"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "care": "nps care"
+  }
 }

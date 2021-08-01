@@ -23,10 +23,6 @@ describe('Left', () => {
     )
     expect(out.value).toEqual(inner)
   })
-  test('cata', () => {
-    const out = raw.cata(Either)
-    expect(out.value).toEqual(inner)
-  })
   test('chain', () => {
     expect(raw.chain(z => z * 2).value).toEqual(inner)
   })
@@ -99,10 +95,6 @@ describe('Right', () => {
         z => z * 3
       ).value
     ).toEqual(inner * 3)
-  })
-  test('cata', () => {
-    const out = raw.cata(Either)
-    expect(out.value).toEqual(inner)
   })
   test('chain', () => {
     expect(raw.chain(z => z * 2)).toEqual(inner * 2)

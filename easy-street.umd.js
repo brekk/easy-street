@@ -155,12 +155,6 @@
     return Either.Right(f(this))
   };
 
-  Left.prototype.cata = function lCata(x) {
-    return x.Left(this.value)
-  };
-  Right.prototype.cata = function rCata(x) {
-    return x.Right(this.value)
-  };
   Left.prototype.swap = function lSwap() {
     return this.Right(this.value)
   };
